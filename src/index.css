@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+    direction: rtl;
+    font-family: 'Iranian Sans', sans-serif;
+}
+.logo{
+    width: 50px;
+}
+
+
+.carouselStyle {
+    position: relative;
+}
+.carouselStyle h3 {
+    position: absolute;
+    right: 8px;
+    bottom: 68px;
+    color: white;
+}
+.carouselStyle span {
+    bottom: 12px;
+    position: absolute;
+    right: 0px;
+    display: inline-block;
+}
+.carouselStyle button {
+    border: none;
+    background: #004658;
+    color: white;
+    fontSize: 22px;
+    padding: 5px 10px;
+    borderRadius: 10px;
+    margin: 0 10px;
+    border-radius: 19px;
+    cursor: pointer;
+}
+
+@media (min-width:320px) and (max-width:479px)  { 
+
+.carouselStyle h3{
+    bottom: 34px;
+    font-size: 12px;
+}
+}
+
+/* slider */
+
+
+
+
+
+
+
+
+
+
+
+
+/* customized carouslslide */
+
+.carousel {
+
+    transform-style: preserve-3d;
+}
+.card-container {
+    transform: rotateY(calc(var(--offset) * 50deg)) scaleY(calc(1 + var(--abs-offset) * -0.4)) translateZ(calc(var(--abs-offset) * -30rem)) translateX(calc(var(--direction) * -5rem));
+    filter: blur(calc(var(--abs-offset) * 1rem));
+}
+.card {
+    width: 100%;
+    height: 100%;
+    padding: 2rem;
+    background-color: #000;
+    border-radius: 1rem;
+    color: #9ca3af;
+    text-align: justify;
+    transition: all 0.3s ease-out;
+}
+.card h2 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0 0 0.7em;
+    color: #1f2937;
+}
+.card p, .card h2 {
+    transition: all 0.3s ease-out;
+    opacity: var(--active);
+}
+.nav {
+    color: white;
+    font-size: 5rem;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 50%;
+    z-index: 2;
+    cursor: pointer;
+    user-select: none;
+    background: unset;
+    border: unset;
+}
+.nav.left {
+    transform: translateX(-100%) translatey(-50%);
+}
+.nav.right {
+    right: 0;
+    transform: translateX(100%) translatey(-50%);
+} 
