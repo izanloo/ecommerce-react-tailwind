@@ -10,7 +10,8 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import { Link } from "react-router-dom";
-
+import { useContext } from "react";
+import { AppContext } from "../../context/Context";
 
 export default function Slider(props) {
     let idCategory = props.idCategory
@@ -24,7 +25,7 @@ export default function Slider(props) {
             console.log(error)
          }
     }
-    useEffect(() => { getData() }, [])
+    useEffect(() => {getData()}, [])
 
     return (
         <>

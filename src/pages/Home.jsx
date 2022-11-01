@@ -5,10 +5,10 @@ import Carousel from '../components/Home/Carousel'
 import SliderHome from '../components/Home/SliderHome'
 import { api } from '../services/Config'
 import { GetCategory } from '../apies/GetCategory'
+import { useContext } from 'react';
 
 export default function Home(props) {
         const [category, setCategory] = useState([])
-
         useEffect(() => {
                 GetCategory().then(res => {
                         setCategory(res.data);

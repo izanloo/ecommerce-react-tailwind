@@ -1,12 +1,15 @@
-import {createContext } from "react";
-export const AppContext = createContext();
+import {createContext,useState } from "react";
+export const AppContext = createContext({});
  
 export function Context({children}){
-    const user ="bb"
-
+    let example="test"
+    // const [nameState,setNameState] = useState({})
     return(
-        <AppContext.Provider value={{user}}>
+        <AppContext.Provider value={{example}}>
             {children}
         </AppContext.Provider>
     )
 }
+
+// use context in aonther component:
+// const {namestate,setNameState} = useContext(AppContext)
