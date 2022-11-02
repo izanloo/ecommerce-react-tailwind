@@ -1,7 +1,7 @@
 import { useState } from "react";
+import { BiShoppingBag, BiUserCircle, BiMenu, BiLogIn, BiRegistered, BiSearch } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import logo from "../assest/images/logo.png"
-import { BiShoppingBag, BiUserCircle, BiMenu, BiLogIn, BiRegistered, BiSearch } from "react-icons/bi";
 
 import {
     Popover,
@@ -22,7 +22,7 @@ export default function Navbar() {
         return (
             <div className="flex flex-col bg-[#151414] text-[#CBCBCB]">
                 {links.map(link => (
-                    <a className="mr-6 font-bold hover:text-white text-base md:text-lg lg:text-xl">
+                    <a className="mr-6 font-bold hover:text-white">
                         {link.charAt(0).toUpperCase() + link.slice(1)}
                     </a>
                 ))}
@@ -34,7 +34,7 @@ export default function Navbar() {
         return (
             <div className=" hidden sm:block">
                 {links.map((link, i) => (
-                    <a className="mr-6 font-bold  hover:text-white hover:border-b text-base md:text-lg lg:text-xl cursor-pointer" key={i}>
+                    <a className="mr-6 font-bold  hover:text-white hover:border-b text-base lg:text-xl cursor-pointer" key={i}>
                         {link.charAt(0).toUpperCase() + link.slice(1)}
                     </a>
                 ))}
@@ -59,7 +59,7 @@ export default function Navbar() {
                 </div>
                 <div className="flex items-center">
                     {/* icon shop and user */}
-                   <Link to='/cart' ><BiShoppingBag className="mx-3 hover:text-white text-3xl" /></Link>
+                    <Link to='/cart' ><BiShoppingBag className="mx-3 hover:text-white text-3xl" /></Link>
                     <Popover placement="bottom">
                         <PopoverHandler className="hover:text-white text-3xl">
                             <button><BiUserCircle /></button>
