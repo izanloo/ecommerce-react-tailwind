@@ -1,14 +1,11 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Carousel from '../components/Home/Carousel'
 import SliderHome from '../components/Home/SliderHome'
-import { api } from '../services/Config'
 import { GetCategory } from '../apies/GetCategory'
-import { useContext } from 'react';
 import WithUser from '../layouts/WithUser';
 
- function Home(props) {
+function Home() {
         const [category, setCategory] = useState([])
         useEffect(() => {
                 GetCategory().then(res => {
@@ -24,7 +21,7 @@ import WithUser from '../layouts/WithUser';
                         </div>
                         {category.map((item, id) => (
                                 <div className="px-3 md:px-20 " key={id} >
-                                        <Link to={`/category/${item.name}`} state={{ item: item }} className='sm:text-2xl mb-2 font-bold mt-2'>{item.name}</Link>
+                                        <Link to={`/category/${item.name}`} state={{ item: item }} className='sm:text-2xl font-bold mt-2'>{item.name}</Link>
                                         <SliderHome idCategory={item.id} />
                                 </div>
                         ))}

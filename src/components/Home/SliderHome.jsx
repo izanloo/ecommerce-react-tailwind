@@ -49,7 +49,7 @@ export default function Slider(props) {
                     className="justify-center mb-10 scrol "
                 >
                     {Object.values(product)?.map((item, id) => (
-                            <SwiperSlide className="mb-10 h-56" key={id}>
+                            <SwiperSlide className="mb-10 mt-5 h-56" key={id}>
                                 <Link to={`/details/${item.id}`} className="relative" >
                                     <img className="w-full h-72 rounded-lg md:hover:scale-75 " src={forTest} alt="" />
                                     <h5 className="mb-2 w-full lg:text-2xl font-bold bg-white text-gray-900 dark:text-white absolute bottom-0 text-center ">{item.name}</h5>
