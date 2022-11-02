@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { BiCartAlt, BiBookmarkHeart, BiShareAlt, BiBell, BiStar } from "react-icons/bi";
 import { Tooltip, Button } from "@material-tailwind/react";
@@ -11,6 +11,7 @@ import WithUser from '../layouts/WithUser'
 
  function Details() {
 
+const navigate = useNavigate();
   let params = useParams();
   const [product, setProduct] = useState({});
   const [category, setCategory] = useState([]);
@@ -73,7 +74,7 @@ import WithUser from '../layouts/WithUser'
       else {
         localStorage.setItem('cart', JSON.stringify([newList]));
       }
-      // return navigate('/cart')
+      return navigate('/cart')
     }
 
   }
