@@ -51,7 +51,7 @@ export default function Navbar() {
                 </Link>
                 <div className="w-full md:px-20">
                     <div className="border rounded-lg bg-white flex md:mr-4 w-full ">
-                        <input type="text" className="px-4 py-1 md:py-2 rounded-lg w-full" placeholder="دنبال چی میگردی...؟" />
+                        <input type="text" className="px-4 py-1 md:py-2 rounded-lg w-full text-[10px] sm:text-sm lg:text-lg " placeholder="دنبال چی میگردی...؟" />
                         <button className="pl-4 text-2xl">
                             <BiSearch />
                         </button>
