@@ -2,5 +2,6 @@ export const PATHS={
     HOME: '/',
     LOGIN: 'login',
     Details:'details/:productId',
-    Category:'category/:categoryName'
+    Category:'category/:categoryName',
+    Cart:'cart'
 }

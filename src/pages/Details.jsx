@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { json, useParams } from 'react-router-dom';
-import { api } from '../services/Config';
-import SliderGallery from '../components/SliderGallery'
+import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { BiCartAlt, BiBookmarkHeart, BiShareAlt, BiBell, BiStar } from "react-icons/bi";
 import { Tooltip, Button } from "@material-tailwind/react";
+import { Helmet } from 'react-helmet';
+import { api } from '../services/Config';
+import SliderGallery from '../components/SliderGallery'
+import WithUser from '../layouts/WithUser'
 
 
-export default function Details() {
+ function Details() {
 
   let params = useParams();
   const [product, setProduct] = useState({});
@@ -76,6 +78,11 @@ export default function Details() {
 
   }
   return (
+    <>
+    <Helmet>
+      <meta charSet='utf-8' />
+      <title>{product.name}</title>
+    </Helmet>
     <div className='pt-32 px-2 md:px-20 '>
       <h6 className='text-gray-500' >گوشی موبایل » {category != '' ? <span>{categoryName} » {product.name}</span> : <span></span>}</h6>
       <div className='md:flex my-5'>
@@ -111,5 +118,7 @@ export default function Details() {
         </div>
       </div>
     </div>
+    </>
   )
 }
+export default WithUser(Details)

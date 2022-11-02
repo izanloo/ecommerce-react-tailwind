@@ -59,7 +59,7 @@ export default function Navbar() {
                 </div>
                 <div className="flex items-center">
                     {/* icon shop and user */}
-                    <BiShoppingBag className="mx-3 hover:text-white text-3xl" />
+                   <Link to='/cart' ><BiShoppingBag className="mx-3 hover:text-white text-3xl" /></Link>
                     <Popover placement="bottom">
                         <PopoverHandler className="hover:text-white text-3xl">
                             <button><BiUserCircle /></button>

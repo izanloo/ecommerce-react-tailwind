@@ -1,21 +1,25 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect} from "react";
 import { useParams } from "react-router-dom"
 import { GetCategory } from '../apies/GetCategory'
 import { api } from "../services/Config";
-import { Helmet } from "react-helmet";
+// import { Helmet } from "react-helmet";
+import WithUser from '../layouts/WithUser'
 
-export default function Category(props) {
+ function Category(props) {
     let params = useParams();
     const [category, setCategory] = useState({})
     const [product, setProduct] = useState({})
-    let categoryId = []
-    useEffect(() => {
+let categoryId =2
+    
+    // useEffect(() => {
         Object.values(category).map((item) => {
-            if (item.name === `${params.categoryName}`) {
-                categoryId = item.id
+            if (item.name = `${params.categoryName}`) {
+                categoryId = item.id 
+                
             }
         })
-    }, [])
+    // }, [category]) 
+    console.log(categoryId)
     useEffect(() => {
         GetCategory().then(res => {
             setCategory(res.data);
@@ -29,14 +33,25 @@ export default function Category(props) {
         }
         catch { }
     }
-    useEffect(() => { getData() }, [])
+    useEffect(() => { 
+        if(categoryId != ''){
+            getData()
+        }  
+     }, [categoryId])
+    
+    console.log(product)
     return (
         <>
-            <Helmet>
+            {/* <Helmet>
                 <meta charSet="utf-8" />
                 <title>دسته بندی  سامسونگ</title>
-                <meta name="description" content="لیست دسته بندی های " />
-            </Helmet>
+            </Helmet> */}
+                <meta name="description" content="لیست دسته بندی های {namecategory}" />
+            <div className="pt-40">
+            {params.categoryName} دسته بندی
+            </div>
+                
         </>
     )
 }
+export default WithUser(Category)

@@ -6,8 +6,9 @@ import SliderHome from '../components/Home/SliderHome'
 import { api } from '../services/Config'
 import { GetCategory } from '../apies/GetCategory'
 import { useContext } from 'react';
+import WithUser from '../layouts/WithUser';
 
-export default function Home(props) {
+ function Home(props) {
         const [category, setCategory] = useState([])
         useEffect(() => {
                 GetCategory().then(res => {
@@ -30,3 +31,4 @@ export default function Home(props) {
                 </>
         )
 }
+export default WithUser(Home)
