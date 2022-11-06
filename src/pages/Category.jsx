@@ -4,20 +4,19 @@ import { GetCategory } from '../apies/GetCategory'
 import { api } from "../services/Config";
 import { Helmet } from "react-helmet";
 import WithUser from '../layouts/WithUser'
-import { BASE_URL } from '../configs/variables.config'
 import Pagination from "../components/Pagination";
-import Records from "../components/Records";
+import CardCategory from "../components/CardCategory";
 
 function Category(props) {
     let params = useParams();
     const [category, setCategory] = useState({})
     let categoryId = '';
-    // Pagination--
+    // Pagination-----
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(true);
     const [currentPage, setCurrentPage] = useState(1);
     const [recordsPerPage] = useState(6);
-    // end Pagination--
+    // end Pagination---
 
     if (category.length >= 1) {
         getItem()
@@ -56,20 +55,21 @@ function Category(props) {
     const nPages = Math.ceil(data.length / recordsPerPage)
     return (
         <>
+            {/* title browser------- */}
             <Helmet>
                 <meta charSet="utf-8" />
                 <title>{params.categoryName} دسته بندی </title>
             </Helmet>
             <meta name="description" content="لیست دسته بندی های {namecategory}" />
+            {/* content-page----------- */}
             <div className="w-full pt-20 ">
-                <Records data={currentRecords} />
+                <CardCategory data={currentRecords} />
                 <Pagination
                     nPages={nPages}
                     currentPage={currentPage}
                     setCurrentPage={setCurrentPage}
                 />
             </div>
-
         </>
     )
 }

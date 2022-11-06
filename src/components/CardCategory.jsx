@@ -3,7 +3,7 @@ import { BASE_URL } from '../configs/variables.config'
 import { BiHeart } from "react-icons/bi";
 import { Link } from 'react-router-dom';
 
-const Records = ({ data }) => {
+const CardCategory = ({ data }) => {
     return (
         <>
             <div className="flex flex-wrap gap-5 px-5 justify-center ">
@@ -23,4 +23,4 @@ const Records = ({ data }) => {
     )
 }
 
-export default Records  
+export default CardCategory  
