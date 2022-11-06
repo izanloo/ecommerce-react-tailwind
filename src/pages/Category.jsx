@@ -57,10 +57,10 @@ function Category(props) {
         <>
             {/* title browser------- */}
             <Helmet>
-                <meta charSet="utf-8" />
                 <title>{params.categoryName} دسته بندی </title>
+            {/* <meta name="description" content="لیست دسته بندی های `{params.categoryName}`" /> */}
             </Helmet>
-            <meta name="description" content="لیست دسته بندی های {namecategory}" />
+            
             {/* content-page----------- */}
             <div className="w-full pt-20 ">
                 <CardCategory data={currentRecords} />

@@ -9,7 +9,7 @@ const CardCategory = ({ data }) => {
             <div className="flex flex-wrap gap-5 px-5 justify-center ">
                 {data.map((item, i) => (
                     <Link to={`details/${item.id}`} key={i}>
-                    <div className='border shadow-md rounded-md mb-3 '>
+                    <div className='border shadow-md rounded-md mb-3'>
                         <img alt="Placeholder" className="block h-auto w-full rounded-t-md" src={`${BASE_URL}/files/${item.thumbnail}`} />
                         <div className='p-3'>
                             <p>{item.name}</p>
@@ -22,5 +22,4 @@ const CardCategory = ({ data }) => {
         </>
     )
 }
-
 export default CardCategory  

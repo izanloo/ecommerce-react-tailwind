@@ -2,7 +2,7 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import Sidebar from '../components/Sidebar';
 
-export default function (Component) {
+export default function WithUser (Component) {
     const currentPath = window.location;
     const categoryPath = '/category';
 
