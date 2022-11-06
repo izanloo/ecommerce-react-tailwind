@@ -4,14 +4,20 @@ import { GetCategory } from '../apies/GetCategory'
 import { api } from "../services/Config";
 import { Helmet } from "react-helmet";
 import WithUser from '../layouts/WithUser'
-import {BASE_URL} from '../configs/variables.config'
+import { BASE_URL } from '../configs/variables.config'
+import Pagination from "../components/Pagination";
+import Records from "../components/Records";
 
 function Category(props) {
     let params = useParams();
     const [category, setCategory] = useState({})
-    const [product, setProduct] = useState({})
     let categoryId = '';
-
+    // Pagination--
+    const [data, setData] = useState([])
+    const [loading, setLoading] = useState(true);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [recordsPerPage] = useState(6);
+    // end Pagination--
 
     if (category.length >= 1) {
         getItem()
@@ -32,7 +38,8 @@ function Category(props) {
     async function getData() {
         try {
             const products = await api.get(`/products?category=${categoryId}`)
-            setProduct(products.data)
+            setData(products.data);
+            setLoading(false);
         }
         catch { }
     }
@@ -41,6 +48,12 @@ function Category(props) {
             getData()
         }
     }, [categoryId])
+
+    // Pagination
+    const indexOfLastRecord = currentPage * recordsPerPage;
+    const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
+    const currentRecords = data.slice(indexOfFirstRecord, indexOfLastRecord);
+    const nPages = Math.ceil(data.length / recordsPerPage)
     return (
         <>
             <Helmet>
@@ -48,16 +61,13 @@ function Category(props) {
                 <title>{params.categoryName} دسته بندی </title>
             </Helmet>
             <meta name="description" content="لیست دسته بندی های {namecategory}" />
-            <div className="pt-40 flex">
-                {Object.values(product).map((item,i)=>(
-                    <Fragment key={i}>
-                        <div className="px-5 ">
-                            <img src={`${BASE_URL}/files/${item.thumbnail}`} />
-                            <h1 className="text-3xl text-center">{item.name}</h1>
-                            <p>{item.price}  تومان </p>
-                        </div>
-                        </Fragment>
-                ))}
+            <div className="w-full pt-20 ">
+                <Records data={currentRecords} />
+                <Pagination
+                    nPages={nPages}
+                    currentPage={currentPage}
+                    setCurrentPage={setCurrentPage}
+                />
             </div>
 
         </>
