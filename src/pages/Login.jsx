@@ -27,7 +27,7 @@ function Login() {
     //axios for check username and pssword admin
     const navigate = useNavigate();
     const location = useLocation()
-    const redirectaddress = location.state?.from.pathname;
+    const redirectaddress = location.state?.from.pathname || '/paneladmin';
     const onSubmit = (data) => {
         axios.post('http://localhost:3002/auth/login', data).then((res) => {
             if (res.status == 201 || 200) {

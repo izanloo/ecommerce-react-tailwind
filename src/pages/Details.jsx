@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { Link,useLocation } from 'react-router-dom';
 import { BiCartAlt, BiBookmarkHeart, BiShareAlt, BiBell, BiStar } from "react-icons/bi";
 import { Tooltip, Button } from "@material-tailwind/react";
 import { Helmet } from 'react-helmet';
@@ -19,7 +19,7 @@ const navigate = useNavigate();
   let [count, setCount] = useState();
   let [cart, setCart] = useState([])
 
-  let categoryId = product.id
+  let categoryId = product.id 
   // let idProductCart = ''
   async function getData() {
     try {

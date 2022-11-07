@@ -11,19 +11,21 @@ function Category(props) {
     let params = useParams();
     const [category, setCategory] = useState({})
     let categoryId = '';
-    // Pagination-----
+    // Pagination-----------------------
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(true);
     const [currentPage, setCurrentPage] = useState(1);
     const [recordsPerPage] = useState(6);
+    const indexOfLastRecord = currentPage * recordsPerPage;
+    const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
+    const currentRecords = data.slice(indexOfFirstRecord, indexOfLastRecord);
+    const nPages = Math.ceil(data.length / recordsPerPage)
     // end Pagination---
 
     if (category.length >= 1) {
         getItem()
     }
-    else {
-        console.log("not categort")
-    }
+
     function getItem() {
         categoryId = category.find(i => i.name === params.categoryName).id;
     }
@@ -47,12 +49,7 @@ function Category(props) {
             getData()
         }
     }, [categoryId])
-
-    // Pagination
-    const indexOfLastRecord = currentPage * recordsPerPage;
-    const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
-    const currentRecords = data.slice(indexOfFirstRecord, indexOfLastRecord);
-    const nPages = Math.ceil(data.length / recordsPerPage)
+  
     return (
         <>
             {/* title browser------- */}
@@ -63,12 +60,17 @@ function Category(props) {
             
             {/* content-page----------- */}
             <div className="w-full pt-20 ">
+                <h1 className="text-2xl font-bold pr-36 pb-5">{params.categoryName}</h1>
+                {data == '' ? 'محصول موردنظر موجود نیست' : 
+                <>
                 <CardCategory data={currentRecords} />
                 <Pagination
                     nPages={nPages}
                     currentPage={currentPage}
                     setCurrentPage={setCurrentPage}
                 />
+                </>
+                } 
             </div>
         </>
     )
