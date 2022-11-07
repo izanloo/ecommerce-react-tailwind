@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 import WithUser from '../layouts/WithUser'
 import logo from "../assest/images/logo.png"
-import { BiErrorCircle } from "react-icons/bi";
+import { BiErrorCircle, BiLock, BiLockOpen } from "react-icons/bi";
+import axios from "axios";
+import { useNavigate,useLocation } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useEffect } from "react";
 
 function Login() {
     // useform for get value inputs and handle error validation
@@ -12,7 +17,27 @@ function Login() {
         formState: { errors },
         handleSubmit
     } = useForm();
-    const onSubmit = (data) => console.log(data);
+
+    //toggle password-------------------
+    const [passwordShow, setPasswordshow] = useState(false)
+    const togglePassword = () => {
+        setPasswordshow(passwordShow ? false : true)
+    }
+
+    //axios for check username and pssword admin
+    const navigate = useNavigate();
+    const location = useLocation()
+    const redirectaddress = location.state?.from.pathname;
+    const onSubmit = (data) => {
+        axios.post('http://localhost:3002/auth/login', data).then((res) => {
+            if (res.status == 201 || 200) {
+                toast.success("خوش اومدی ادمین عزیز")
+                localStorage.setItem('token', res.data.token)
+                navigate(redirectaddress, { replace: true })
+            }
+        }).catch((err) =>
+            toast.error("نام کاربری یا رمز عبور اشتباه است"))
+    }
 
     return (
         <div className="flex bg-gray-100 pt-40 pb-20">
@@ -30,19 +55,25 @@ function Login() {
                     <ErrorMessage
                         errors={errors}
                         name="username"
-                        render={({ message }) => <p className="text-red-700 pt-2 flex items-center"><BiErrorCircle/>{message}</p>}
+                        render={({ message }) => <p className="text-red-700 pt-2 flex items-center"><BiErrorCircle />{message}</p>}
                     />
                     {/* ///// */}
                     <label className="block mb-2 mt-6" for="password">پسورد</label>
-                    <input className='w-full p-2 border border-gray-400 rounded-lg bg-gray-100'
-                        {...register("password", {
-                            required: "پسورد خود را وارد کنید"
-                        })}
-                    />
-                     <ErrorMessage
+                    <div className="relative">
+                        <input className='w-full p-2 border border-gray-400 rounded-lg bg-gray-100'
+                            {...register("password", {
+                                required: "پسورد خود را وارد کنید"
+                            })}
+                            type={passwordShow ? "text" : "password"}
+                        />
+                        <div className="absolute top-2 left-2 text-2xl text-gray-700" onClick={togglePassword}>
+                            {passwordShow ? <BiLockOpen /> : <BiLock />}
+                        </div>
+                    </div>
+                    <ErrorMessage
                         errors={errors}
                         name="password"
-                        render={({ message }) => <p className="text-red-700 pt-2 flex items-center"><BiErrorCircle/>{message}</p>}
+                        render={({ message }) => <p className="text-red-700 pt-2 flex items-center"><BiErrorCircle />{message}</p>}
                     />
                     <input type="submit" className="w-full bg-yellow-400 font-bold py-2 px-4 my-6 rounded-lg" value="ورود" />
                 </form>
