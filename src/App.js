@@ -1,5 +1,5 @@
 import React from "react";
-import AppRoute from './configs/route/AppRoute'
+import AppRoute from './route/AppRoute'
 import { Context } from "./context/Context";
 
 function App() {

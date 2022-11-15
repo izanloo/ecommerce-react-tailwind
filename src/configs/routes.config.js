@@ -5,5 +5,7 @@ export const PATHS={
     Details:'details/:productId',
     Category:'category/:categoryName',
     Cart:'cart',
-    PanelAdmin:'panelAdmin'
+    FormCustomer:'formCustomer',
+    PanelAdmin:'panelAdmin',
+    Payment:'payment'
 }

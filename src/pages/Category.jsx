@@ -25,7 +25,6 @@ function Category(props) {
     if (category.length >= 1) {
         getItem()
     }
-
     function getItem() {
         categoryId = category.find(i => i.name === params.categoryName).id;
     }

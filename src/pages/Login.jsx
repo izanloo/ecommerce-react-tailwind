@@ -6,9 +6,8 @@ import logo from "../assest/images/logo.png"
 import { BiErrorCircle, BiLock, BiLockOpen } from "react-icons/bi";
 import axios from "axios";
 import { useNavigate,useLocation } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useEffect } from "react";
 
 function Login() {
     // useform for get value inputs and handle error validation
@@ -52,11 +51,7 @@ function Login() {
                             required: "نام کابری را وارد کنید"
                         })}
                     />
-                    <ErrorMessage
-                        errors={errors}
-                        name="username"
-                        render={({ message }) => <p className="text-red-700 pt-2 flex items-center"><BiErrorCircle />{message}</p>}
-                    />
+                    <ErrorMessage errors={errors} name="username" render={({ message }) => <p className="text-red-700 pt-2 flex items-center"><BiErrorCircle />{message}</p>}/>
                     {/* ///// */}
                     <label className="block mb-2 mt-6" for="password">پسورد</label>
                     <div className="relative">
