@@ -6,17 +6,17 @@ import React from 'react'
 
 const Slide = (props) => {
   return (
-    <div className='carouselStyle h-68 pt-28 '>
-      <img src={props.image.link} alt="Sliderr_image" className='h-full w-full object-cover' />
-      <h3>
+    <div className='carouselStyle relative h-72 pt-24 ' style= { {backgroundImage:`url(${props.image.link})`} } >
+      <img src={props.image.link} alt="Sliderr_image" className='h-full w-full object-cover hidden' />
+      <h3 className='absolute right-5 bottom-36 text-white'>
         {props.image.title}
       </h3>
-      <span >
-        <button onClick={props.slidePrev}>
+      <span className='absolute bottom-0  inline-block ' >
+        <button onClick={props.slidePrev} className="border text-white rounded-full px-2 py-0.5 bg-sky-800 mx-1">
           {"<"}
         </button>
 
-        <button onClick={props.slideNext}>
+        <button onClick={props.slideNext}  className="border text-white rounded-full px-2 py-0.5 bg-sky-800 mx-1">
           {">"}
         </button>
       </span>

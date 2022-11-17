@@ -47,7 +47,7 @@ export default function Navbar() {
         <header className="fixed z-10 bg-[#0046be] text-white w-full">
             <div className="grid-cols-3 gap-4 justify-between flex items-center px-1 md:px-20 py-3 border-b">
                 <Link to='/'>
-                    <img src={logo} alt="لوگو موبایل کده" className="logo" />
+                    <img src={logo} alt="لوگو موبایل کده" className="w-14" />
                 </Link>
                 <div className="w-full md:px-20">
                     <div className="border rounded-lg bg-white flex md:mr-4 w-full ">

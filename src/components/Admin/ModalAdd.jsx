@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { BiAddToQueue } from "react-icons/bi";
 import { BASE_URL } from '../../configs/variables.config'
@@ -9,17 +9,27 @@ import UploadImage from "../../apies/UploadImage";
 import { Tooltip } from "@material-tailwind/react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { GetCategory } from '../../apies/GetCategory';
 
 
 export default function ModalAdd() {
     //toast :for show massage success
     const notify = () => toast("محصول جدید اضافه شد");
-    
+
     //modal
     const [showModal, setShowModal] = React.useState(false);
 
     // "useform" for get value inputs and handle error validation:
     const { register, formState: { errors }, handleSubmit } = useForm();
+
+    // get category for show in tag selcet
+    let [category, setCategory] = useState([])
+    useEffect(() => {
+        GetCategory().then((res) => {
+            setCategory(res.data)
+        })
+    }, [category])
+
 
     //get value input type file for show image in modal
     const [mydata, setData] = useState('')
@@ -42,42 +52,41 @@ export default function ModalAdd() {
 
     // "handleSubmite" post inputs and images galley and thumnail
     const onSubmit = async (data) => {
-        // get and upload images gallery
-        let files = data.gallery
-        let temp = [];
-        Object.values(files).map((item) => {
-            const formData = new FormData();
-            formData.append("image", item);
-            const tempRequest = UploadImage(formData)
-            temp.push(tempRequest);
-        });
-        const arrayResponse = await Promise.all(temp);
-        const galleryImages = arrayResponse.map(function (item) {
-            return item["data"]["filename"]
-        });
-        //get and upload image (thumnial)
-        let thumbnail = data.thumbnail
-        let imageThumbnail = [];
-        const formData = new FormData();
-        formData.append("image", thumbnail[0])
-        imageThumbnail = UploadImage(formData)
-        const arrayResponse1 = await Promise.all([imageThumbnail]);
-        const imgThumnail = arrayResponse1.map(function (item) {
-            return item["data"]["filename"]
-        });
-        //post all inputs
-        axios.post(`${BASE_URL}/products`, {
-            "name": data.nameProduct,
-            "category": "1",
-            "price": data.price,
-            "count": data.count,
-            "description": data.description,
-            "images": galleryImages,
-            "thumbnail": imgThumnail
-        }).then(() => {
-            notify()
-        })
-    }
+// get and upload images gallery
+// let files = data.gallery
+// let temp = [];
+// Object.values(files).map((item) => {
+//     const formData = new FormData();
+//     formData.append("image", item);
+//     const tempRequest = UploadImage(formData)
+//     temp.push(tempRequest);
+// });
+// const arrayResponse = await Promise.all(temp);
+// const galleryImages = arrayResponse.map(function (item) {
+//     return item["data"]["filename"]
+// });
+//get and upload image (thumnial)
+let thumbnail = data.thumbnail
+let imageThumbnail = [];
+const formData = new FormData();
+formData.append("image", thumbnail[0])
+imageThumbnail = UploadImage(formData)
+const arrayResponse1 = await Promise.all([imageThumbnail]);
+const imgThumnail = arrayResponse1.map(function (item) {
+    return item["data"]["filename"]
+});
+//post all inputs
+axios.post(`${BASE_URL}/products`, {
+    "name": data.nameProduct,
+    "category":data.category,
+    "price": data.price,
+    "count": data.count,
+    "description": data.description,
+    // "images": galleryImages,
+    "thumbnail": imgThumnail
+}).then(() => {
+    notify()
+})    }
 
     return (
         <>
@@ -121,13 +130,20 @@ export default function ModalAdd() {
                                                 {mydata != '' ? <img src={mydata.imagePreview} className="h-60 w-60 rounded-md" /> : <p className="flex flex-col justify-evenly h-60">عکس شاخص</p>}
                                             </label>
                                             <input type="file" id="file" className="hidden" name="thumbnail" {...thumbnail} onChange={e => { thumbnail.onChange(e); handleImageUpload(e) }} />
-
                                             <ErrorMessage errors={errors} name="thumbnail" render={({ message }) => <p className="text-red-700 pt-2 flex items-center"><BiErrorCircle />{message}</p>} />
 
-                                            <label for="gallery" className="mt-4">گالری عکس:(3عکس) </label>
+                                            {/* <label for="gallery" className="mt-4">گالری عکس:(3عکس) </label>
                                             <input id="gallery" accept="image/jpg,image/jpeg" type="file" name="gallery" className="hidden" multiple {...register("gallery", { required: "عکس محصول را وارد کنید" })} />
                                             <ErrorMessage errors={errors} name="gallery" render={({ message }) => <p className="text-red-700 pt-2 flex items-center"><BiErrorCircle />{message}</p>} />
-
+                                           */}
+                                            {category = ''  || null ? <>دسته بندی وجود ندارد</> : 
+                                            <select class="block border p-3 rounded-md w-full" name="category" {...register('category', { required: true })}>
+                                            <option selected value="">دسته بندی</option>
+                                            {category.map((item,i)=>(
+                                                <option key={i} value={item.id}>{item.name}</option>
+                                            ))}
+                                        </select>
+                                            }
                                             <div className="flex items-baseline font-bold">
                                                 <input type="submit" className=" bg-green-400 w-full py-2 px-3 my-6 rounded-md" value="افزودن محصول" />
                                                 <ToastContainer />

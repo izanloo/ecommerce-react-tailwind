@@ -11,57 +11,12 @@ body{
 }
 
 
-.carouselStyle {
-    position: relative;
-}
-.carouselStyle h3 {
-    position: absolute;
-    right: 8px;
-    bottom: 68px;
-    color: white;
-}
-.carouselStyle span {
-    bottom: 12px;
-    position: absolute;
-    right: 0px;
-    display: inline-block;
-}
-.carouselStyle button {
-    border: none;
-    background: #004658;
-    color: white;
-    fontSize: 22px;
-    padding: 5px 10px;
-    borderRadius: 10px;
-    margin: 0 10px;
-    border-radius: 19px;
-    cursor: pointer;
-}
-
-@media (min-width:320px) and (max-width:479px)  { 
-
-.carouselStyle h3{
-    bottom: 34px;
-    font-size: 12px;
-}
-}
-
-/* slider */
-
-
-
-
-
-
-
-
-
 
 
 
 /* customized carouslslide */
 
-.carousel {
+/* .carousel {
 
     transform-style: preserve-3d;
 }
@@ -110,4 +65,4 @@ body{
 .nav.right {
     right: 0;
     transform: translateX(100%) translatey(-50%);
-} 
+}  */
