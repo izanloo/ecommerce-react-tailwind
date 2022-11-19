@@ -1,18 +1,14 @@
 
-import React from "react";
-import { Outlet, Navigate } from "react-router-dom";
-const useAuth = () => {
-  const user = localStorage.getItem("token");
-  if (user) {
-    return true;
-  } else {
-    return false;
-  }
-};
+import React, { useEffect } from 'react';
+import { Outlet, useLocation } from 'react-router-dom';
+import { CheckUserExpired } from '../utils/functions';
+const PublicRoute = () => {
 
-const PublicRoute = ({element}) => {
-  const auth = useAuth();
-  return auth ? <Navigate to="/paneladmin" />: element
-};
+    const location = useLocation();
+    useEffect(() => {
+        CheckUserExpired("public");
+    },[location]);
 
+    return <Outlet/>;
+};
 export default PublicRoute;
