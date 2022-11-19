@@ -6,8 +6,9 @@ import React from 'react'
 
 const Slide = (props) => {
   return (
-    <div className='carouselStyle relative h-72 pt-24 ' style= { {backgroundImage:`url(${props.image.link})`} } >
-      <img src={props.image.link} alt="Sliderr_image" className='h-full w-full object-cover hidden' />
+    <div className='carouselStyle relative pt-24 ' >
+      {/* style= { {backgroundImage:`url(${props.image.link})`} } */}
+      <img src={props.image.link} alt="Sliderr_image" className='h-full w-full object-cover' />
       <h3 className='absolute right-5 bottom-36 text-white'>
         {props.image.title}
       </h3>

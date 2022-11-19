@@ -66,11 +66,9 @@ export default function Footer() {
                     <div className="px-4 mt-4 w-full text-right sm:text-center">
                         <h5 className="text-xl font-bold mb-6">ما را دنیال کنید</h5>
                         <SocialIcon network="twitter" url="" bgColor="#4e4b4b" />
-                        <SocialIcon network="whatsapp" url="" bgColor="#4e4b4b" className="mx-1" />
+                        <SocialIcon network="whatsapp" url="" bgColor="#4e4b4b" className="mx-2" />
                         <SocialIcon network="instagram" url="" bgColor="#4e4b4b" />
-                        <SocialIcon network="linkedin" url="" bgColor="#4e4b4b" className="mx-1"  />
-                        {/* <a href=""><FontAwesomeIcon icon="fa-brands fa-instagram" /></a> */}
-                        {/* <a href=""><FontAwesomeIcon icon="fa-brands fa-square-instagram bg-red" /></a> */}
+                        <SocialIcon network="linkedin" url="" bgColor="#4e4b4b" className="mx-2"  />
                     </div>
                 </div>
                 <div className="mt-6 pt-6 border-t text-center">

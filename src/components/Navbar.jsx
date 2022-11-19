@@ -8,7 +8,7 @@ import {
     PopoverHandler,
     PopoverContent,
 } from "@material-tailwind/react";
-
+import DebounceSrcatch from "./DebounceSrcatch";
 
 export default function Navbar() {
     const links = ["گوشی موبایل", " لوازم جانبی", "ساعت  دستبند هوشمند", "تبلت", "هنذفری واسپیکر", "صوتی و تصویری"];
@@ -44,17 +44,14 @@ export default function Navbar() {
 
     return (
         // bg-[#151414] text-[#CBCBCB]
-        <header className="fixed z-10 bg-[#0046be] text-white w-full">
+        <header className="fixed z-10 bg-[#151414] text-[#CBCBCB] w-full">
             <div className="grid-cols-3 gap-4 justify-between flex items-center px-1 md:px-20 py-3 border-b">
                 <Link to='/'>
                     <img src={logo} alt="لوگو موبایل کده" className="w-14" />
                 </Link>
                 <div className="w-full md:px-20">
-                    <div className="border rounded-lg bg-white flex md:mr-4 w-full ">
-                        <input type="text" className="px-4 py-1 md:py-2 rounded-lg w-full text-[10px] sm:text-sm lg:text-lg " placeholder="دنبال چی میگردی...؟" />
-                        <button className="pl-4 text-2xl">
-                            <BiSearch />
-                        </button>
+                    <div className="border rounded-lg bg-white flex md:mr-4 w-full relative ">
+                        <DebounceSrcatch/>
                     </div>
                 </div>
                 <div className="flex items-center">
@@ -64,7 +61,7 @@ export default function Navbar() {
                         <PopoverHandler className="hover:text-white text-3xl">
                             <button><BiUserCircle /></button>
                         </PopoverHandler>
-                        <PopoverContent className="ml-2 py-2 rounded-md">
+                        <PopoverContent className="ml-2 py-2 rounded-md z-20">
                             <Link to='/login' className="flex items-center px-2 hover:text-[#8C2973]"><BiLogIn className="ml-1" />ورود</Link>
                             <Link to='/' className="flex items-center px-2 hover:text-[#8C2973]"><BiRegistered className="ml-1" />ثبت نام</Link>
                         </PopoverContent>

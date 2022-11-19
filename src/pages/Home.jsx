@@ -16,9 +16,9 @@ function Home() {
                 <>
                         <Carousel />
                         <div className='flex justify-center border-black border-b relative my-20 mx-3 sm:mx-20'>
-                                <h3 className='sm:text-3xl font-bold bg-white border border-sky-900 w-fit rounded-md absolute mt-[-24px] px-1 sm:px-7 py-2 '>دسته بندی محصولات</h3>
+                                <h3 className='sm:text-3xl font-bold bg-[#fbf5f5] border border-sky-900 w-fit rounded-md absolute mt-[-24px] px-1 sm:px-7 py-2 '>دسته بندی محصولات</h3>
                         </div>
-                        {category.map((item, id) => ( 
+                        {category.map((item, id) => (
                                 <div className="px-3 md:px-20 " key={id} >
                                         <Link to={`/category/${item.name}`} state={{ item: item }} className='sm:text-2xl font-bold mt-2'>{item.name}</Link>
                                         <SliderHome idCategory={item.id} />

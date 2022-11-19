@@ -18,13 +18,15 @@ export default function AppRoute() {
             <BrowserRouter>
                 <Routes>
                     {/* -----------public pages--------------- */}
+                    <Route element={<PublicRoute/>}>
                     <Route path={PATHS.HOME} element={<Home />} />
-                    <Route path={PATHS.LOGIN} element={<PublicRoute element={<Login />} />} />
+                    <Route path={PATHS.LOGIN} element={<Login/>}/>
                     <Route path={PATHS.Details} element={<Details />} />
                     <Route path={PATHS.Category} element={<Category />} />
                     <Route path={PATHS.Cart} element={<Cart />} />
                     <Route path={PATHS.FormCustomer} element={<FormCustomer/>} />
                     <Route path={PATHS.Payment} element={<Payment/>} />
+                    </Route>
 
                     {/* ----------protected pages admin----------------------------- */}
                     <Route path={PATHS.PanelAdmin} element={<ProtectedRoute element={<PanelAdmin/>} />} />
