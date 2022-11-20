@@ -8,6 +8,7 @@ import persian from "react-date-object/calendars/persian"
 import persian_fa from "react-date-object/locales/persian_fa"
 import DateObject from "react-date-object";
 import WithUser from "../layouts/WithUser";
+import imgFormCustomer from '../assest/images/imgFormCustomer.png'
 
 
 function FormCustomer() {
@@ -26,38 +27,52 @@ function FormCustomer() {
     }
     return (
         <>
-        {cartLocalstorage == undefined ? <div className="pt-40">هیچ محصولی برای خرید انتخاب نکرده اید</div> : 
-            <form onSubmit={handleSubmit(onSubmit)} className="pt-40 pb-10">
-                <label className="block mb-2" for="firstName">نام</label>
-                <input className=' p-2  border border-gray-400 rounded-lg bg-gray-100'{...register("firstName", { required: "نام خود را وارد کنید" })} />
-                <ErrorMessage errors={errors} name="firstName" render={({ message }) => <p className="text-red-700 pt-2 flex items-center"><BiErrorCircle />{message}</p>} />
-               
-                <label className="block mb-2" for="lastName">نام خانوادگی</label>
-                <input className=' p-2  border border-gray-400 rounded-lg bg-gray-100'{...register("lastName", { required: "نام خود را وارد کنید" })} />
-                <ErrorMessage errors={errors} name="lastName" render={({ message }) => <p className="text-red-700 pt-2 flex items-center"><BiErrorCircle />{message}</p>} />
+            {cartLocalstorage == undefined ? <div className="pt-40">هیچ محصولی برای خرید انتخاب نکرده اید</div> :
+                <div className="md:grid md:grid-cols-2 lg:grid-flow-col lg:grid-cols-3 xl:grid-cols-4 lg:gap-3 pt-40 pb-10 justify-center  bg-[#e5e5e5] px-5">
+                    <form onSubmit={handleSubmit(onSubmit)} className="border bg-[#FBF6F6] rounded-lg px-5 flex flex-col items-center py-5  ">
+                        <div className="relative w-full">
+                            <label className="absolute mr-3 block" for="firstName" >نام</label>
+                            <input className='p-2 mt-3 border rounded-lg w-full'{...register("firstName", { required: "نام خود را وارد کنید" })} />
+                            <ErrorMessage errors={errors} name="firstName" render={({ message }) => <p className="text-red-700 pt-2 flex items-center"><BiErrorCircle />{message}</p>} />
+                        </div>
 
-                <label className="block mb-2" for="address">آدرس</label>
-                <input className=' p-2  border border-gray-400 rounded-lg bg-gray-100'{...register("address", { required: "نام خود را وارد کنید" })} />
-                <ErrorMessage errors={errors} name="address" render={({ message }) => <p className="text-red-700 pt-2 flex items-center"><BiErrorCircle />{message}</p>} />
+                        <div className="relative w-full mt-4">
+                            <label className="absolute mr-3 block" for="lastName">نام خانوادگی</label>
+                            <input className='mt-3 p-2 border rounded-lg w-full'{...register("lastName", { required: "نام خود را وارد کنید" })} />
+                            <ErrorMessage errors={errors} name="lastName" render={({ message }) => <p className="text-red-700 pt-2 flex items-center"><BiErrorCircle />{message}</p>} />
+                        </div>
+                        <div className="relative w-full mt-4">
+                            <label className="absolute mr-3 block" for="address">آدرس</label>
+                            <input className='mt-3 p-2 border rounded-lg w-full'{...register("address", { required: "نام خود را وارد کنید" })} />
+                            <ErrorMessage errors={errors} name="address" render={({ message }) => <p className="text-red-700 pt-2 flex items-center"><BiErrorCircle />{message}</p>} />
+                        </div>
 
-                <label className="block mb-2" for="phone">شماره تماس</label>
-                <input type="tel" className=' p-2  border border-gray-400 rounded-lg bg-gray-100'{...register("phone", { required: "نام خود را وارد کنید" })} />
-                <ErrorMessage errors={errors} name="phone" render={({ message }) => <p className="text-red-700 pt-2 flex items-center"><BiErrorCircle />{message}</p>} />
-               
-                <label>تاریخ ارسال : </label>
-                <div style={{ direction: "rtl" }}>
-                    <DatePicker
-                        calendar={persian}
-                        locale={persian_fa}
-                        calendarPosition="bottom-right"
-                        value={dateValue}
-                        onChange={setDateValue}
-                        minDate={new DateObject({ calendar: persian })}
-                    />
+                        <div className="relative w-full mt-4">
+                            <label className="absolute mr-3 block" for="phone">شماره تماس</label>
+                            <input type="tel" className='mt-3 p-2  border rounded-lg w-full'{...register("phone", { required: "نام خود را وارد کنید" })} />
+                            <ErrorMessage errors={errors} name="phone" render={({ message }) => <p className="text-red-700 pt-2 flex items-center"><BiErrorCircle />{message}</p>} />
+                        </div>
+                        <div className="relative w-full mt-4">
+
+                        <label className="absolute mr-3 mb-5 block">تاریخ ارسال : </label>
+                        <div style={{ direction: "rtl" }}>
+                            <DatePicker
+                                calendar={persian}
+                                locale={persian_fa}
+                                calendarPosition="bottom-right"
+                                value={dateValue}
+                                onChange={setDateValue}
+                                minDate={new DateObject({ calendar: persian })}
+                            />
+                        </div>
+                        </div>
+                        <input type="submit" value="ثبت" className="bg-[#8C2973] w-full text-white text-xl p-2 rounded-lg mt-5" />
+                    </form>
+                    <div  className="hidden md:block">
+                        <img src={imgFormCustomer} alt="img form customer" className="h-96" />
+                    </div>
                 </div>
-                <input type="submit" value="ثبت" />
-            </form>
-        }
+            }
         </>
     )
 }

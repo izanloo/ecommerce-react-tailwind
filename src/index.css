@@ -20,3 +20,15 @@ body{
 .image-gallery-thumbnail-inner img{
 height: 70px;
 }
+
+/* page formCustomer */
+.rmdp-container{
+    width: 100%;
+}
+.rmdp-container input{
+    width: 100%;
+    padding: 1.3rem;
+    margin-top: 14px;
+    border:1px solid #e5e7eb;
+    border-radius: 0.5rem;
+}
