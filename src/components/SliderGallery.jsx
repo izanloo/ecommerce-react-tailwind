@@ -3,29 +3,23 @@
 import React from "react";
 import "react-image-gallery/styles/css/image-gallery.css";
 import ImageGallery from "react-image-gallery";
-import img1 from '../assest/images/forTest.webp'
+import { BASE_URL } from "../configs/variables.config";
 
+export default function SliderGallery(props) {
+  let gallery = props.data.images;
+  let images = []
 
-const images = [
-  {
-    original: img1,
-    thumbnail:img1,
-  },
-  {
-    original: img1,
-    thumbnail: img1,
-  },
-  {
-    original: img1,
-    thumbnail: img1,
-  },
-];
-
-class SliderGallery extends React.Component {
-  render() {
-    return <ImageGallery items={images} />;
+  if (gallery != null) {
+    {
+      (gallery).map((item, i) => {
+        images = [...images, { 'original': `${BASE_URL}/files/${item}`, 'thumbnail': `${BASE_URL}/files/${item}` }]
+      })
+    }
   }
+
+  return (
+    <ImageGallery items={images}  />
+  )
 }
-export default SliderGallery;
 
 

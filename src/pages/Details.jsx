@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import { Link,useLocation } from 'react-router-dom';
+import { useNavigate, useParams, Link } from 'react-router-dom';
 import { BiCartAlt, BiBookmarkHeart, BiShareAlt, BiBell, BiStar } from "react-icons/bi";
-import { Tooltip, Button } from "@material-tailwind/react";
+import { Tooltip } from "@material-tailwind/react";
 import { Helmet } from 'react-helmet';
 import { api } from '../services/Config';
 import SliderGallery from '../components/SliderGallery'
 import WithUser from '../layouts/WithUser'
+import { ToastContainer, toast } from 'react-toastify';
 
 
- function Details() {
+function Details() {
 
-const navigate = useNavigate();
+  const navigate = useNavigate();
   let params = useParams();
   const [product, setProduct] = useState({});
   const [category, setCategory] = useState([]);
@@ -19,8 +19,7 @@ const navigate = useNavigate();
   let [count, setCount] = useState();
   let [cart, setCart] = useState([])
 
-  let categoryId = product.id 
-  // let idProductCart = ''
+  let categoryId = product.id
   async function getData() {
     try {
       const getProduct = await api.get(`products/${params.productId}`)
@@ -47,17 +46,18 @@ const navigate = useNavigate();
 
   }, [count])
   // add product to cart(save in localStorage)
+
   const handleAddCart = () => {
 
     if (count > parseInt(product.count)) {
-      console.log("موجودی کم است")
+      toast.error("موجودی کم است")
     }
     if (count <= 0) {
-      console.log("عدد وارد شده نادرست است")
+      toast.error("عدد وارد شده نادرست است")
+
     }
 
-    if (count <= parseInt(product.count)) {
-      // setCart([{ "name": product.name ,"price": product.price ,  "count": count , "id": product.id}])
+    else if (count <= parseInt(product.count)) {
       let items = { 'count': count }
       let newList = Object.assign(...cart, items)
       if (localStorage.getItem("cart")) {
@@ -80,45 +80,46 @@ const navigate = useNavigate();
   }
   return (
     <>
-    <Helmet>
-      <meta charSet='utf-8' />
-      <title>{product.name}</title>
-    </Helmet>
-    <div className='pt-32 px-2 md:px-20 '>
-      <h6 className='text-gray-500' >گوشی موبایل » {category != '' ? <span>{categoryName} » {product.name}</span> : <span></span>}</h6>
-      <div className='md:flex my-5'>
-        {/* gallery images */}
-        <div className='w-50 flex'>
-          <div className='md:pl-3'>
-            <Tooltip content="افزودن به علاقه مندی ها" className='bg-sky-700 p-3 '>
-              <Button variant="gradient" className='text-sky-700 text-4xl'><BiBookmarkHeart /></Button>
-            </Tooltip>
-            <Tooltip content="اشتراک گذاری" className='bg-sky-700 p-3 '>
-              <Button variant="gradient" className='text-sky-700 text-4xl'><BiShareAlt /></Button>
-            </Tooltip>
-            <Tooltip content="تخفیف خورد خبرم کن :)" className='bg-sky-700 p-3 z-10 '>
-              <Button variant="gradient" className='text-sky-700 text-4xl'><BiBell /></Button>
-            </Tooltip>
-          </div>
-          <SliderGallery />
-        </div>
-        {/* description mobile */}
-        <div className='w-50  md:pr-5 lg:pr-20 xl:pr-40 xl:pl-20 mt-3 md:mt-0'>
-          <h1 className='text-3xl font-bold mb-3'>{product.name}</h1>
-          <p className='text-justify mb-2'>توضیحات {product.description}</p>
-          <Link to='' className='text-sky-700'><BiStar className='text-yellow-400 inline ml-1' />(0 نظر)</Link>
-          <div className='flex justify-between items-center'>
-            <div>
-              <label className='mr-10'>تعداد : </label>
-              <input type='number' className=' border-2 border-black rounded' min="1" max="25" onChange={handleChange} />
+      <Helmet>
+        <meta charSet='utf-8' />
+        <title>{product.name}</title>
+      </Helmet>
+      <div className='pt-32 px-2 md:px-20 '>
+        <h6 className='text-gray-500' >گوشی موبایل » {category != '' ? <span>{categoryName} » {product.name}</span> : <span></span>}</h6>
+        <div className='md:flex my-5'>
+          {/* gallery images */}
+          <div className='w-50 flex'>
+            <div className='md:pl-3 '>
+              <Tooltip content="افزودن به علاقه مندی ها" className='bg-sky-700 p-3 '>
+                <button variant="gradient" className='text-sky-700 text-4xl block'><BiBookmarkHeart /></button>
+              </Tooltip>
+              <Tooltip content="اشتراک گذاری" className='bg-sky-700 p-3 '>
+                <button variant="gradient" className='text-sky-700 text-4xl block'><BiShareAlt /></button>
+              </Tooltip>
+              <Tooltip content="تخفیف خورد خبرم کن :)" className='bg-sky-700 p-3 z-10 '>
+                <button className='text-sky-700 text-4xl block'><BiBell /></button>
+              </Tooltip>
             </div>
-            <h2 className='text-2xl font-bold text-left mt-3'>{product.price} تومان</h2>
+            <SliderGallery data={product} />
           </div>
-          <button className='flex items-center bg-yellow-400 w-full justify-center rounded-lg text-2xl mt-4 mb-3 py-4' onClick={handleAddCart}><BiCartAlt className='ml-2 text-sky-700' />افزودن به سبد خرید</button>
-          <Link to='' className='text-sky-700 font-bold text-left block'>چطور قسطی خرید کنم؟</Link>
+          {/* description mobile */}
+          <div className='w-50  md:pr-5 lg:pr-20 xl:pr-40 xl:pl-20 mt-3 md:mt-0'>
+            <h1 className='text-xl md:text-3xl font-bold mb-3'>{product.name}</h1>
+            <p className='text-justify mb-2'>توضیحات {product.description}</p>
+            <Link to='' className='text-sky-700'><BiStar className='text-yellow-400 inline ml-1' />(0 نظر)</Link>
+            <div className='flex justify-between items-center'>
+              <div>
+                <label className='mr-10'>تعداد : </label>
+                <input type='number' className=' border-2 border-black rounded' min="1" max="25" onChange={handleChange} />
+              </div>
+              <h2 className='text-2xl font-bold text-left mt-3'>{product.price} تومان</h2>
+            </div>
+            <button className='flex items-center bg-yellow-400 w-full justify-center rounded-lg text-2xl mt-4 mb-3 py-4' onClick={handleAddCart}><BiCartAlt className='ml-2 text-sky-700' />افزودن به سبد خرید</button>
+            <ToastContainer />
+            <Link to='' className='text-sky-700 font-bold text-left block'>چطور قسطی خرید کنم؟</Link>
+          </div>
         </div>
       </div>
-    </div>
     </>
   )
 }
