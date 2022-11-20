@@ -3,7 +3,6 @@ import React from 'react'
 const Pagination = ({ nPages, currentPage, setCurrentPage }) => {
 
     const pageNumbers = [...Array(nPages + 1).keys()].slice(1)
-
     
 
     const nextPage = () => {
@@ -25,7 +24,7 @@ const Pagination = ({ nPages, currentPage, setCurrentPage }) => {
                 </li>
                 {pageNumbers.map(pgNumber => (
                     <li key={pgNumber} 
-                        className= {`page-item ${currentPage == pgNumber ? 'bg-yellow-400' : ''} , border rounded-full px-2 `} >
+                        className= {`page-item ${currentPage == pgNumber ? 'bg-[#8C2973] text-white' : ''} , border rounded-full px-2 `} >
                         <a onClick={() => setCurrentPage(pgNumber)}    className='page-link'  href='#'> {pgNumber}</a>
                     </li>
                 ))}
