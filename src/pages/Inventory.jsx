@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
-import WithAdmin from "../layouts/WithAdmin";
 import EasyEdit from 'react-easy-edit';
-import { useNavigate } from "react-router-dom";
-import Pagination from "../components/Pagination";
-import { BiTrash } from "react-icons/bi";
 import { GetProducts, GetProduct, UpdateProduct } from '../apies/GetProducts'
+import WithAdmin from "../layouts/WithAdmin";
 
 
 function Inventory() {
@@ -17,7 +14,6 @@ function Inventory() {
     const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
     const currentRecords = dataLocalStorage.slice(indexOfFirstRecord, indexOfLastRecord);
     const nPages = Math.ceil(dataLocalStorage.length / recordsPerPage)
-
 
     let [products, setProducts] = useState([])
     useEffect(() => {
@@ -33,8 +29,8 @@ function Inventory() {
                 UpdateProduct(id, data)
             }
         })
-
     }
+
     const savePrice = (price, id) => {
         GetProduct(id).then((res) => {
             if (res.status == 200) {
@@ -43,10 +39,9 @@ function Inventory() {
                 UpdateProduct(id, data)
             }
         })
-
     }
+    
     const cancel = () => { alert("تغییرات ذخیره نمی شود") }
-
 
     return (
         <>
