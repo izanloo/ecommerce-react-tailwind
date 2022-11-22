@@ -4,11 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>درگاه پرداخت</title>
+    <style>
+        .btn{
+            color: white;
+            font-size: 27px;
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+        .btn-success{
+            background-color: rgb(76, 207, 24);
+            padding: 15px 50px;
+        }
+        .btn-cancel{
+            background-color: red;
+        }
+    </style>
 </head>
-<body>
-    فرم پرداخت شاپرک
-    <a href="http://localhost:3000/payment?status=sucsess">تایید</a>
-    <a href="http://localhost:3000/payment?status=fail">انصراف</a>
+<body style="text-align:center;">
+    <h1>فرم پرداخت</h1>
+    <a href="http://localhost:3000/payment?status=sucsess" class="btn btn-success">تایید</a>
+    <a href="http://localhost:3000/payment?status=fail" class="btn btn-cancel">انصراف</a>
 </body>
 </html>
