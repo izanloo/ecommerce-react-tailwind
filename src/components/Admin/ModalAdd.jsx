@@ -28,7 +28,7 @@ export default function ModalAdd() {
         GetCategory().then((res) => {
             setCategory(res.data)
         })
-    }, [category])
+    }, [])
 
 
     //get value input type file for show image in modal
@@ -53,18 +53,18 @@ export default function ModalAdd() {
     // "handleSubmite" post inputs and images galley and thumnail
     const onSubmit = async (data) => {
 // get and upload images gallery
-// let files = data.gallery
-// let temp = [];
-// Object.values(files).map((item) => {
-//     const formData = new FormData();
-//     formData.append("image", item);
-//     const tempRequest = UploadImage(formData)
-//     temp.push(tempRequest);
-// });
-// const arrayResponse = await Promise.all(temp);
-// const galleryImages = arrayResponse.map(function (item) {
-//     return item["data"]["filename"]
-// });
+let files = data.gallery
+let temp = [];
+Object.values(files).map((item) => {
+    const formData = new FormData();
+    formData.append("image", item);
+    const tempRequest = UploadImage(formData)
+    temp.push(tempRequest);
+});
+const arrayResponse = await Promise.all(temp);
+const galleryImages = arrayResponse.map(function (item) {
+    return item["data"]["filename"]
+});
 //get and upload image (thumnial)
 let thumbnail = data.thumbnail
 let imageThumbnail = [];
@@ -82,7 +82,7 @@ axios.post(`${BASE_URL}/products`, {
     "price": data.price,
     "count": data.count,
     "description": data.description,
-    // "images": galleryImages,
+    "images": galleryImages,
     "thumbnail": imgThumnail
 }).then(() => {
     notify()
@@ -132,10 +132,10 @@ axios.post(`${BASE_URL}/products`, {
                                             <input type="file" id="file" className="hidden" name="thumbnail" {...thumbnail} onChange={e => { thumbnail.onChange(e); handleImageUpload(e) }} />
                                             <ErrorMessage errors={errors} name="thumbnail" render={({ message }) => <p className="text-red-700 pt-2 flex items-center"><BiErrorCircle />{message}</p>} />
 
-                                            {/* <label for="gallery" className="mt-4">گالری عکس:(3عکس) </label>
+                                            <label for="gallery" className="mt-4">گالری عکس:(3عکس) </label>
                                             <input id="gallery" accept="image/jpg,image/jpeg" type="file" name="gallery" className="hidden" multiple {...register("gallery", { required: "عکس محصول را وارد کنید" })} />
                                             <ErrorMessage errors={errors} name="gallery" render={({ message }) => <p className="text-red-700 pt-2 flex items-center"><BiErrorCircle />{message}</p>} />
-                                           */}
+                                          
                                             {category = ''  || null ? <>دسته بندی وجود ندارد</> : 
                                             <select class="block border p-3 rounded-md w-full" name="category" {...register('category', { required: true })}>
                                             <option selected value="">دسته بندی</option>

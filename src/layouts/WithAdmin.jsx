@@ -1,19 +1,21 @@
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import Orders from '../components/Admin/Orders'
+import { Link } from 'react-router-dom'
 
-export default function WithAdmin (Component) {
-
+export default function WithAdmin(Component) {
 
     return function Layout({ ...props }) {
         return (
             <>
                 <Navbar />
-                <Orders/>
-                    <div>
-                       <Component {...props} />
-                    </div>
-                
+                <div className='pt-32'>
+                <Link to='/panelAdmin'>تمام محصولات</Link>
+                <Link to='/orders'>سفارشات</Link>
+                </div>
+                <div>
+                    <Component {...props} />
+                </div>
+
                 <Footer />
             </>
         )

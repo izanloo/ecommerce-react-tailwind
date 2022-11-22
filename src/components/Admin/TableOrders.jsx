@@ -4,23 +4,25 @@ function TableOrders(props) {
     return (
         <>
             {rows = undefined || '' ? <>سفارشی وجود ندارد</> :
-                <table>
+                <table className="border border-black">
+                    <tbody>
                     <tr>
                         <th>نام </th>
                         <th>نام خانوادگی</th>
                         <th>آدرس</th>
                         <th>جزییات سفارش</th>
                     </tr>
-                    <tr>
                     {rows.map((item,i)=>(
+                    <tr>
                         <>
-                        <td key={i}>{item.customerDetail.firstName}</td>
-                        <td >{item.customerDetail.lastName}</td>
-                        <td >{item.customerDetail.address}</td>
-                        <td>مودال جزییات </td>
+                        <td key={i} className="border border-black">{item.customerDetail.firstName}</td>
+                        <td className="border border-black">{item.customerDetail.lastName}</td>
+                        <td className="border border-black">{item.customerDetail.address}</td>
+                        <td className="border border-black">مودال جزییات </td>
                         </> 
-                    ))}
                     </tr>
+                    ))}
+                    </tbody>
                 </table>
             } 
         </>

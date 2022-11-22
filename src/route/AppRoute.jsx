@@ -12,6 +12,8 @@ import PanelAdmin from '../pages/PanelAdmin';
 import ProtectedRoute from './ProtectedRoute';
 import PublicRoute from './PublicRoute';
 import PrivateRoute from './PrivateRoute';
+import Orders from '../pages/Orders';
+import Inventory from '../pages/Inventory';
 
 export default function AppRoute() {
     return (
@@ -31,6 +33,8 @@ export default function AppRoute() {
                     {/* ----------protected pages (rol: admin,user)--------------- */}
                     <Route element={<ProtectedRoute />}>
                         <Route path={PATHS.PanelAdmin} element={<PanelAdmin />} />
+                        <Route path={PATHS.Orders} element={<Orders/>}/>
+                        <Route path={PATHS.Inventory} element={<Inventory/>}/>
                     </Route>
 
                     {/*----------private Route------------------------------------- */}

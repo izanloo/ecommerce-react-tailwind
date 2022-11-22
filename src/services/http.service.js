@@ -12,12 +12,12 @@ class HttpService{
     put(url,data,config){
         return axios.put(url,data,config)
     }
-    push(url,data,config){
-        return axios.push(url,data,config)
-    }
-    patch(url,data,config){
-        return axios.patch(url,data,config)
-    }
+    // push(url,data,config){
+    //     return axios.push(url,data,config)
+    // }
+    // patch(url,data,config){
+    //     return axios.patch(url,data,config)
+    // }
     delete(url,config){
         return axios.delete(url,config)
     }
