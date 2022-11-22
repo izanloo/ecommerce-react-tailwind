@@ -40,26 +40,26 @@ function Inventory() {
             }
         })
     }
-    
+
     const cancel = () => { alert("تغییرات ذخیره نمی شود") }
 
     return (
         <>
             {products == null || '' ? <>محصولی موحود نیست</> :
-                <table className="border text-center ">
+                <table className="border text-center border-black">
                     <tbody>
                         <tr>
-                            <th className="border px-2">نام محصول</th>
-                            <th className="border px-2">تعداد</th>
-                            <th className="border px-2">قیمت واحد</th>
+                            <th className="border border-black px-2">نام محصول</th>
+                            <th className="border border-black px-2">تعداد</th>
+                            <th className="border border-black px-2">قیمت واحد</th>
                         </tr>
                         {products.map((item, id) => (
                             <tr key={id}>
-                                <td className="border px-2">{item.name}</td>
-                                <td className="border px-2 pt-40">
+                                <td className="border border-black px-2">{item.name}</td>
+                                <td className="border border-black px-2 pt-40">
                                     <EasyEdit type="number" value={item.count} onSave={(value) => saveCount(value, item.id)} onCancel={cancel} saveButtonLabel="ذخیره" cancelButtonLabel="کنسل" id="editCount" attributes={{ name: "awesome-input", id: item.id }} />
                                 </td>
-                                <td className="border px-2 pt-40">
+                                <td className="border border-black px-2 pt-40">
                                     <EasyEdit type="number" value={item.price} onSave={(value) => savePrice(value, item.id)} onCancel={cancel} saveButtonLabel="ذخیره" cancelButtonLabel="کنسل" id="editCount" attributes={{ name: "awesome-input", id: item.id }} />
                                 </td>
                             </tr>

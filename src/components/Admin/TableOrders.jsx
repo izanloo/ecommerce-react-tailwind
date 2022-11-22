@@ -13,13 +13,11 @@ function TableOrders(props) {
                         <th>جزییات سفارش</th>
                     </tr>
                     {rows.map((item,i)=>(
-                    <tr>
-                        <>
-                        <td key={i} className="border border-black">{item.customerDetail.firstName}</td>
+                    <tr key={i}>
+                        <td  className="border border-black">{item.customerDetail.firstName}</td>
                         <td className="border border-black">{item.customerDetail.lastName}</td>
                         <td className="border border-black">{item.customerDetail.address}</td>
                         <td className="border border-black">مودال جزییات </td>
-                        </> 
                     </tr>
                     ))}
                     </tbody>
