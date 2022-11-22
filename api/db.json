@@ -98,19 +98,18 @@
       "id": 9
     },
     {
-      "name": "kjkhkhjk",
-      "category": "3",
-      "price": "10000",
-      "count": "10",
-      "description": "5455dafaf",
+      "name": "ویرایش تستم",
+      "category": "1",
+      "price": "3",
+      "count": "3",
+      "description": "توضیحات تست",
       "images": [
-        "ddb4da063ba9930e524db6458d9c4319",
-        "716b78ab2bb1fc8dcb697e5aaaa1ddaf"
+        "9f9fdda7b2a3774afbc1e7eece401d37",
+        "292296a46d4b6280d2eff48676e698d6"
       ],
       "thumbnail": [
-        "059d3d98db7fbcce5e7bd59ce2c79c97"
+        "d2cad417c02c3f8a449ee96553330582"
       ],
-      "createdAt": 1669107179444,
       "id": 10
     }
   ],
