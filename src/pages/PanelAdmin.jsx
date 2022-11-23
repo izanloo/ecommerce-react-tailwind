@@ -24,7 +24,6 @@ function PanelAdmin() {
         })
     }, [])
 
-
     return (
         < div className="pt-5">
             <div className='flex justify-center border-black border-b relative my-10 mx-3 '>

@@ -5,6 +5,7 @@ import { BiTrash } from "react-icons/bi";
 import { BASE_URL } from '../../configs/variables.config'
 import { useState } from 'react';
 import { DeleteProduct } from '../../apies/GetProducts';
+import { FormatPrice } from '../../utils/functions';
 
 const Products = ({ data }) => {
 let [Products,setProducts] = useState(data)
@@ -35,7 +36,7 @@ let [Products,setProducts] = useState(data)
                             <td className='border p-2'>{<img src={`${BASE_URL}/files/${item.thumbnail}`} className=" w-32 " />}</td>
                             <td className='border p-2'>{item.name}</td>
                             <td className='border p-2'>{item.count}</td>
-                            <td className='border p-2'>{item.price}</td>
+                            <td className='border p-2'>{FormatPrice(item.price)}</td>
                             <td className='border p-2'><ModalEdit item={item} /></td>
                             <td className='border p-2'><BiTrash onClick={() => { deleteProduct(item.id) }} /></td>
                         </tr>

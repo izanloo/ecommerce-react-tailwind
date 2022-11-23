@@ -25,3 +25,9 @@ export const CheckUserExpired = (pageStatus) => {
         }
     }
 }
+
+// convert number to format price 
+export function FormatPrice(number){
+    const price =  new Intl.NumberFormat("fa").format(number)
+    return price
+}
