@@ -9,10 +9,8 @@ export default function WithAdmin(Component) {
         return (
             <>
                 <Navbar />
-                <div className='pt-28'>
-                
-                </div>
-                <div className='flex'>
+                <div className='pt-28'></div>
+                <div className='flex justify-center'>
                 <SidebarAdmin/>
                     <Component {...props} />
                 </div>

@@ -63,7 +63,7 @@ const SidebarAdmin = () => {
   }, [active, delay]);
 
   return (
-    <div className={` bg-[#151414]  text-[#cbcbcb] shadow-lg border-black border-r-0 h-auto min-h-full w-16 flex flex-col items-center justify-start transition-shadow ml-32 py-5 ${expanded && " w-56 items-start "}`}>
+    <div className={` bg-[#151414] absolute right-0  text-[#cbcbcb] shadow-lg border-black border-r-0 h-auto min-h-full w-16 flex flex-col items-center justify-start transition-shadow  py-5 ${expanded && " w-56 items-start "}`}>
       {menuItems.map((item, index) => {
         let middle = false;
         if (!(index === 0 || index === menuItems.length - 1)) {

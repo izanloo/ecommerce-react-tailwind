@@ -92,7 +92,7 @@ axios.post(`${BASE_URL}/products`, {
         <>
             <Tooltip content="افزودن محصول جدید" className='bg-sky-700 p-3 '>
                 <button
-                    className=" font-bold text-3xl  shadow hover:shadow-lg "
+                    className=" font-bold text-3xl ml-3 text-[#8c2973] shadow hover:shadow-lg "
                     type="button"
                     onClick={() => setShowModal(true)}
                 >
@@ -147,7 +147,7 @@ axios.post(`${BASE_URL}/products`, {
                                             <div className="flex items-baseline font-bold">
                                                 <input type="submit" className=" bg-green-400 w-full py-2 px-3 my-6 rounded-md" value="افزودن محصول" />
                                                 <ToastContainer />
-                                                <button className="text-red-500 bg-yellow-400 w-full py-2 mr-1 h-fit text-sm rounded-md px-5" type="button" onClick={() => setShowModal(false)}> کنسل!</button>
+                                                <button className="text-red-500 bg-yellow-400 w-full py-2 mr-1 h-fit text-sm rounded-md px-5" type="button" onClick={() => setShowModal(false)}> بستن!</button>
                                             </div>
                                         </div>
                                     </form>

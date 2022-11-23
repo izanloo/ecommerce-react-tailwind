@@ -96,21 +96,6 @@
       ],
       "createdAt": 1669107037174,
       "id": 9
-    },
-    {
-      "name": "ویرایش تستم",
-      "category": "1",
-      "price": "3",
-      "count": "3",
-      "description": "توضیحات تست",
-      "images": [
-        "9f9fdda7b2a3774afbc1e7eece401d37",
-        "292296a46d4b6280d2eff48676e698d6"
-      ],
-      "thumbnail": [
-        "d2cad417c02c3f8a449ee96553330582"
-      ],
-      "id": 10
     }
   ],
   "category": [
