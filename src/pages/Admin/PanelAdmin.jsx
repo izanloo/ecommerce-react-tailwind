@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import { GetProducts } from '../apies/GetProducts';
-import Pagination from "../components/Pagination";
-import Products from '../components/Admin/Products'
-import WithAdmin from '../layouts/WithAdmin'
-import ModalAdd from "../components/Admin/ModalAdd";
+import { GetProducts } from '../../apies/GetProducts';
+import Pagination from "../../components/Pagination";
+import Products from '../../components/Admin/Products'
+import WithAdmin from '../../layouts/WithAdmin'
+import ModalAdd from "../../components/Admin/ModalAdd";
 import { Link } from "react-router-dom";
 
 function PanelAdmin() {

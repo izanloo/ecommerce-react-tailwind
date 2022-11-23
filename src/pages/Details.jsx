@@ -7,6 +7,7 @@ import { api } from '../services/Config';
 import SliderGallery from '../components/SliderGallery'
 import WithUser from '../layouts/WithUser'
 import { ToastContainer, toast } from 'react-toastify';
+import { FormatPrice } from '../utils/functions';
 
 
 function Details() {
@@ -45,8 +46,8 @@ function Details() {
     setCart([{ "name": product.name, "price": product.price, "count": count, "id": product.id }])
 
   }, [count])
-  // add product to cart(save in localStorage)
 
+  // add product to cart(save in localStorage)
   const handleAddCart = () => {
 
     if (count > parseInt(product.count)) {
@@ -112,9 +113,9 @@ function Details() {
                 <label className='mr-10'>تعداد : </label>
                 <input type='number' className=' border-2 border-black rounded' min="1" max="25" onChange={handleChange} />
               </div>
-              <h2 className='text-2xl font-bold text-left mt-3'>{product.price} تومان</h2>
+              <h2 className='text-2xl font-bold text-left mt-3'>{FormatPrice(product.price)} تومان</h2>
             </div>
-            <button className='flex items-center bg-yellow-400 w-full justify-center rounded-lg text-2xl mt-4 mb-3 py-4' onClick={handleAddCart}><BiCartAlt className='ml-2 text-sky-700' />افزودن به سبد خرید</button>
+            <button className='flex items-center bg-[#8c2973] text-white w-full justify-center rounded-lg text-2xl mt-4 mb-3 py-4' onClick={handleAddCart}><BiCartAlt className='ml-2 text-black' />افزودن به سبد خرید</button>
             <ToastContainer />
             <Link to='' className='text-sky-700 font-bold text-left block'>چطور قسطی خرید کنم؟</Link>
           </div>

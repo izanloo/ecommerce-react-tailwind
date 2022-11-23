@@ -4,6 +4,7 @@ import { GetProduct, UpdateProduct } from '../apies/GetProducts'
 import PaymentCancel from '../components/PaymentCancel'
 import WithUser from "../layouts/WithUser";
 import { AddOrders } from '../apies/Orders'
+import PaymentSucess from "../components/PaymentSucess";
 
 
 function Payment() {
@@ -68,8 +69,8 @@ function Payment() {
         }
     }
     return (
-        <div className="pt-40">
-            {searchParams.get("status") == 'sucsess' ? <>با موفقیت پرداخت شد</> : <PaymentCancel />}
+        <div className="pt-40 flex flex-col items-center">
+            {searchParams.get("status") == 'sucsess' ? <PaymentSucess/> : <PaymentCancel />}
         </div>
     )
 }

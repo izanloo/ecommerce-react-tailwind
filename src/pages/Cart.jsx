@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import WithUser from "../layouts/WithUser";
 import EasyEdit from 'react-easy-edit';
 import { useNavigate } from "react-router-dom";
-import Pagination from "../components/Pagination";
 import { BiTrash } from "react-icons/bi";
+import Pagination from "../components/Pagination";
+import {FormatPrice} from '../utils/functions'
 
 
 
@@ -91,14 +92,14 @@ function Cart() {
                                     <td className="border px-2">
                                         <EasyEdit type="number" value={item.count} onSave={(value) => save(value, item)} onCancel={cancel} saveButtonLabel="ذخیره" cancelButtonLabel="کنسل" id="editCount" attributes={{ name: "awesome-input", id: item.id }} />
                                     </td>
-                                    <td className="border px-2">{item.price}</td>
+                                    <td className="border px-2">{FormatPrice(item.price)}</td>
                                     <td className="border px-2"><button onClick={() => { deleteProuduct(item.id) }}><BiTrash /></button></td>
                                 </tr>
                             ))}
                         </tbody>
                     </table>
                     <div className="flex mt-5 items-center">
-                    <h2>جمع: {sum == null ? "0" : <span>{sum} </span>} تومان  </h2>
+                    <h2>جمع: {sum == null ? "0" : <span>{FormatPrice(sum)} </span>} تومان  </h2>
                     <button className="bg-[#8C2973] text-white border rounded-md text-2xl pb-2 pt-1 px-5 mx-5 h-fit" onClick={buy}>خرید</button>
                         </div>
                     <Pagination

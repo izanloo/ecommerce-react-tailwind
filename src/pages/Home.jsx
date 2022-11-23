@@ -20,7 +20,7 @@ function Home() {
                         </div>
                         {category.map((item, id) => (
                                 <div className="px-3 md:px-20 " key={id} >
-                                        <Link to={`/category/${item.name}`} state={{ item: item }} className='sm:text-2xl font-bold mt-2'>{item.name}</Link>
+                                        <Link to={`/category/${item.name}`}  className='sm:text-2xl font-bold mt-2'>{item.name}</Link>
                                         <SliderHome idCategory={item.id} />
                                 </div>
                         ))}

@@ -32,5 +32,8 @@ height: 70px;
     border:1px solid #e5e7eb;
     border-radius: 0.5rem;
 }
-
+/* slider home */
+.swiper-wrapper{
+    justify-content: center;
+}
 

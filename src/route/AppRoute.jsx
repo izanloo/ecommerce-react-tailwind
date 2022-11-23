@@ -8,12 +8,12 @@ import Cart from '../pages/Cart';
 import FormCustomer from '../pages/FormCustomer';
 import Payment from '../pages/Payment';
 import Notfound from '../pages/Notfound';
-import PanelAdmin from '../pages/PanelAdmin';
 import ProtectedRoute from './ProtectedRoute';
 import PublicRoute from './PublicRoute';
 import PrivateRoute from './PrivateRoute';
-import Orders from '../pages/Orders';
-import Inventory from '../pages/Inventory';
+import PanelAdmin from '../pages/Admin/PanelAdmin';
+import Orders from '../pages/Admin/Orders';
+import Inventory from '../pages/Admin/Inventory';
 
 export default function AppRoute() {
     return (

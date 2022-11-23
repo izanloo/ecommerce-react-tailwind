@@ -70,7 +70,7 @@ function Login() {
                         name="password"
                         render={({ message }) => <p className="text-red-700 pt-2 flex items-center"><BiErrorCircle />{message}</p>}
                     />
-                    <input type="submit" className="w-full bg-yellow-400 font-bold py-2 px-4 my-6 rounded-lg" value="ورود" />
+                    <input type="submit" className="w-full text-white bg-[#8c2973] font-bold py-2 px-4 my-6 rounded-lg" value="ورود" />
                 </form>
                 <div className='flex justify-between'>
                     <a className="text-indigo-700 hover:text-pink-700 text-sm float-left" href="#">رمز عبورم را فراموش کردم !</a>
